@@ -5,8 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using Entities.DTOs;
 
-namespace DataAccess.Concrete.InMemort
+namespace DataAccess.Concrete.InMemory
 {
     public class InMemoryCarDal : ICarDal
     {
@@ -59,6 +60,11 @@ namespace DataAccess.Concrete.InMemort
         }
 
         public Car Get(Expression<Func<Car, bool>> filter)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<CarDetailDTO> GetProductDetails()
         {
             throw new NotImplementedException();
         }
