@@ -15,17 +15,21 @@ namespace Console
             BrandManager brandManager = new BrandManager(new EfBrandDal());
             ColorManager colorManager = new ColorManager(new EfColorDal());
 
-            //CRUD 
-            foreach (var car in carManager.GetAll())
+            //CRUD
+            var resultOne = carManager.GetCarDetails();
+            foreach (var car in resultOne.Data)
             {
-                System.Console.WriteLine("CARS||| car ıd: "+car.Id+" car description: "+car.Description+" car color Id: "+car.ColorId
-                    +" car brand ıd: "+car.BrandId+" car model year: "+car.ModelYear);
+                System.Console.WriteLine("Car Id:"+car.Id+" DAILYPRICE: "+car.DailyPrice+" DESCRIPTION:"+car.Description+" MODEL YEAR: "+car.ModelYear);
             }
-            foreach (var car in carManager.GetByUnitPrice(0,80))
+
+            var resultTwo = carManager.GetByUnitPrice(0, 100);
+
+            foreach (var car in resultTwo.Data)
             {
-                System.Console.WriteLine(car.Id);
+                System.Console.WriteLine("\n");
+                System.Console.WriteLine("NAME: "+car.Description+" PRICE:"+car.DailyPrice);
             }
-            carManager.Add(new Car { Id = 7, BrandId = 4, ColorId = 5, DailyPrice = 130, Description = "PASSAT QASQHAI", ModelYear = "2019" }) ;
+            
         
         }
     }
